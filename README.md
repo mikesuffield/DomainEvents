@@ -53,8 +53,6 @@ A typical example of using commands and events is as follows:
 
 ### Events vs Commands
 
-Although event and commands may seem similar, their intent are different.
-
 |                 | Command                                 | Event                         |
 |-----------------|-----------------------------------------|-------------------------------|
 | Intent          | Initial request for something to happen | Record something has happened |
