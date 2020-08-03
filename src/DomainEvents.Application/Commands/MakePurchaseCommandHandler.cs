@@ -26,13 +26,13 @@ namespace DomainEvents.Application.Commands
         {
             _logger.LogInformation("MakePurchaseCommandHandler - called...");
 
-            // Raise ItemPurchasedEvent - will be handled by the warehouse system to ammend stock quantities etc
-            var itemPurchasedEvent = _mapper.Map<ItemPurchasedEvent>(purchase);
-            _mediator.Publish(itemPurchasedEvent);
-
             // Raise StoreTransactionEvent - will be handled by the finance system to log store balances etc
             var storeTransactionEvent = _mapper.Map<StoreTransactionEvent>(purchase);
             _mediator.Publish(storeTransactionEvent);
+
+            // Raise ItemPurchasedEvent - will be handled by the warehouse system to ammend stock quantities etc
+            var itemPurchasedEvent = _mapper.Map<ItemPurchasedEvent>(purchase);
+            _mediator.Publish(itemPurchasedEvent);
 
             return Task.FromResult("Thanks for your purchase. We are processing your order.");
         }
