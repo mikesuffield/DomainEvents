@@ -110,6 +110,8 @@ public class ItemPurchasedEventHandler : INotificationHandler<ItemPurchasedEvent
 }
 ```
 
+Events are raised using the `mediator.Publish(event)` method.
+
 ### Commands (aka Requests)
 
 As well as Events (Notifications), MediatR also supports Commands, known as "Requests". Commands implement the `IRequest<T>` interface, as shown below. The type specifies the data that will be returned to the person that has make the request (this is optional).
@@ -131,6 +133,8 @@ public class MakePurchaseCommandHandler : IRequestHandler<MakePurchaseCommand, s
     }
 }
 ```
+
+Commands are sent using the `mediator.Send(command)` method.
 
 ## Example 
 
