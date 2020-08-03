@@ -65,13 +65,13 @@ A typical example of using commands and events is as follows:
 
 ## Why use Events & Commands?
 
-Separating the source of a command from any subsequent processing allows various different input types (user interfaces, message buses, external API calls and so on) to be converted into commands - the input layer in the system doesn't take any actions apart from sending a command. These commands can then be processed by an command handler which triggers what the application is supposed to do.
+Separating the source of a command from any subsequent processing allows various different input types (user interfaces, message buses, external API calls and so on) to be converted into commands - the input layer in the system doesn't take any actions apart from sending a command. These commands can then be processed by a command handler.
 
-The application layer handles the commands and raises domain events as necessary, taking care of the subsequent processing and complex domain logic - but it doesn't care about the input source (i.e. it is input agnostic). Decoupling the domain logic in this way reduces the changes of running into issues (e.g. open/closed or single responsibility principles) as the application grows. 
+The application layer handles the commands and raises domain events as necessary, taking care of the processing and complex domain logic - but it doesn't care about the input source (i.e. it is input agnostic). Decoupling the domain logic in this way reduces the chances of running into issues (e.g. open/closed or single responsibility principles) as the application grows. 
 
-Furthermore, having a clear fine-grained event stream makes it easier to amend or divert events to different systems in the future, and we can add further event handlers to implement new functionality as new requirements arise.
+Furthermore, having a clear, fine-grained event stream makes it easier to amend or divert events to different systems in the future, and we can add further event handlers to implement additional functionality as new requirements arise.
 
-Finally, as previously mentioned, domain events can be stored to provide a full audit log of the system, which can provide invaluable. 
+Finally, as previously mentioned, domain events can be stored to provide a full audit log of the system.
 
 ## MediatR
 
@@ -112,7 +112,7 @@ Events are raised using the `mediator.Publish(event)` method.
 
 ### Commands (aka Requests)
 
-As well as Events (Notifications), MediatR also supports Commands, known as "Requests". Commands implement the `IRequest<T>` interface, as shown below. The type specifies the data that will be returned to the person that has make the request (this is optional).
+As well as Events (Notifications), MediatR also supports Commands, known as "Requests". Commands implement the `IRequest<T>` interface, as shown below. The type `<T>` specifies the data that will be returned to the person that has make the request (this is optional).
 
 ```cs
 public class MakePurchaseCommand : IRequest<string>
